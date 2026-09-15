@@ -1,0 +1,19 @@
+# --- Node / build ---
+node_modules/
+npm-debug.log*
+*.log
+
+# --- Wrangler / Cloudflare ---
+.wrangler/
+dev.vars
+
+# --- Secrets / local ---
+.env
+.env.*
+*.pem
+*.key
+*.p8
+
+# --- Editor / OS ---
+.DS_Store
+Thumbs.db
