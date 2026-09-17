@@ -157,6 +157,12 @@ async function build() {
   // SPA-friendly fallback: any other path serves index.html
   fs.copyFileSync(path.join(OUT, "index.html"), path.join(OUT, "404.html"));
 
+  // Redirects (Cloudflare Pages _redirects) — keep old /sponsors URLs working
+  fs.writeFileSync(
+    path.join(OUT, "_redirects"),
+    "/sponsors /brands 301\n/sponsors/ /brands/ 301\n"
+  );
+
   console.log("Built Singlespeeed site →", OUT);
   console.log("Files:", fs.readdirSync(OUT).join(", "));
 }
