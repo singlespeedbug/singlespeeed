@@ -31,7 +31,7 @@ function layout({ title, description, body, active, now }) {
     ["/rides/", "Rides"],
     ["/parts/", "Parts & Reviews"],
     ["/wheels/", "Wheel Building"],
-    ["/sponsors/", "Sponsors"],
+    ["/brands/", "Brands"],
   ];
   return `<!doctype html>
 <html lang="en">
@@ -132,22 +132,23 @@ async function build() {
     "rides",
     "parts",
     "wheels",
-    "sponsors",
+    "sponsors", // page key stays "sponsors"; output goes to /brands/
   ]) {
     const def = await pageDef(name);
     const frag = pageFragment(name);
     const html = layout({
       title: def.title,
       description: def.description,
-      active: name === "index" ? "/" : `/${name}/`,
+      active: name === "index" ? "/" : name === "sponsors" ? "/brands/" : `/${name}/`,
       body: frag,
       now: new Date(),
     });
-    // index → web/, others → web/<name>/
+    // index → web/, others → web/<seg>/. sponsors deploys to /brands/
+    const seg = name === "sponsors" ? "brands" : name;
     if (name === "index") {
       fs.writeFileSync(path.join(OUT, "index.html"), html);
     } else {
-      const dir = path.join(OUT, name);
+      const dir = path.join(OUT, seg);
       fs.mkdirSync(dir, { recursive: true });
       fs.writeFileSync(path.join(dir, "index.html"), html);
     }

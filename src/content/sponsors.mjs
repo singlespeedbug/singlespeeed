@@ -1,4 +1,4 @@
 export default {
-  title: "Sponsors",
-  description: "Sponsors and partners keeping singlespeed riding alive — and how to get involved.",
+  title: "Brands",
+  description: "The brands and partners keeping singlespeed riding alive — and how to get involved.",
 };
