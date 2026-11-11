@@ -1,0 +1,10 @@
+{
+  "name": "singlespeeed-counter",
+  "main": "index.js",
+  "compatibility_date": "2024-01-01",
+  "kv_namespaces": [
+    // After running: npx wrangler kv namespace create VISITS
+    // paste the returned id below replacing PLACEHOLDER_KV_ID
+    { "binding": "VISITS", "id": "674fb03f0ea349d0a37534e18846dfb3" }
+  ]
+}
