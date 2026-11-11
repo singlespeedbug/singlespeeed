@@ -92,6 +92,15 @@
     </ul>
   </div>
   <p class="muted small wrap copyright">© 2026 Singlespeeed. All rights reserved.</p>
+  <div class="wrap counter-line">
+    <span class="muted small"><span id="visit-count">—</span> visits</span>
+  </div>
 </footer>
+<script>
+  fetch("https://singlespeeed-counter.singlespeeed.workers.dev/")
+    .then(function(r){ return r.json(); })
+    .then(function(d){ document.getElementById("visit-count").textContent = d.count.toLocaleString(); })
+    .catch(function(){});
+</script>
 </body>
 </html>
